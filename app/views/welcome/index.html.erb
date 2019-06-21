@@ -1,0 +1,18 @@
+<h1>Welcome#index</h1>
+
+LIST OF ALL THE PRODUCTS
+<div class="image_box">
+	<% @products.each do |p| %>
+		<%= image_tag p.pic_url %>
+			<%= p.name %>
+			<%= p.description %>
+			<%= p.price %>
+		<% end %>
+</div>
+
+<div class="footer">
+
+	SHOW PRODUCT
+	<% link_to "Show Product Details", product_path(@product) %>
+
+</div>
