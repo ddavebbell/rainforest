@@ -3,11 +3,10 @@ DISPLAY ALL PICTURES WITH
 <% @products.each do |product| %>
 	<div>
 		<%= product.name %>
-			<% product.reviews.each do |review| %>
-				<%= review.name %>
-				<%= review.text %>
-			</div>
-
-			<% end %>
-		<%= link_to "All Reviews", @reviews %>
+		<% product.reviews.each do |review| %>
+			<%= review.name %>
+			<%= review.text %>
+		<% end %>
+		<%= link_to "All Reviews for #{product.name}", product_reviews_path(product) %>
+	</div>
 <% end %>
