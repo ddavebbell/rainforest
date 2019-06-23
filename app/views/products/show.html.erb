@@ -16,3 +16,17 @@
 		<p>Created at: <%= review.created_at %></p>
 	<% end %>
 </div>
+
+<div class="create_reviews">
+	<p>Write a review:</p>
+	<%= form_for [@product, @review] do |f| %>
+		<%= f.label :name %>
+		<%= f.text_field :name %><br>
+
+		<%= f.label :text %>
+		<%= f.text_field :text %><br>
+
+		<%= f.submit %>
+	<% end %>
+
+</div>

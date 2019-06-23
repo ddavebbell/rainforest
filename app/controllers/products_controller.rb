@@ -17,13 +17,11 @@ class ProductsController < ApplicationController
 		})
 		if @product.save
 			redirect_to product_path(@product)
-			flash[:notice] = "Product successfully created"
-		else
-			flash[:notice] = "Nothing happened."
 		end
 	end
 
 	def show
 		@product = Product.find(params[:id])
+		@review = Review.new
 	end
 end

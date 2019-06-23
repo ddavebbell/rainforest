@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_06_22_221606) do
   create_table "reviews", force: :cascade do |t|
     t.integer "product_id"
     t.string "name"
-    t.string "text"
+    t.text "text"
     t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 

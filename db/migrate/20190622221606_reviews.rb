@@ -4,7 +4,7 @@ class Reviews < ActiveRecord::Migration[5.2]
       t.belongs_to :product, index: true
 
       t.string :name
-      t.string :text
+      t.text :text
     end
   end
 end
