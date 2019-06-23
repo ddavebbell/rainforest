@@ -9,4 +9,7 @@ class Product < ApplicationRecord
       errors[:price_in_cents] << 'must be an integer'
     end
 	end
+
+
+
 end
