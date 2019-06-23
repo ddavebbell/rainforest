@@ -1,0 +1,16 @@
+DISPLAY ALL PICTURES WITH
+
+<%= @products.each do |p| %>
+	<div>
+		<%= @products.name %>
+			<% p.reviews.each.limit(3) do |r| %>
+				<%= r.name %>
+				<%= r.text %>
+			</div>
+
+			<% end %>
+		<%= link_to "All Reviews", @reviews %>
+<% end %>
+
+
+<%# link_to "Profile", profile_path(@profile) %>
