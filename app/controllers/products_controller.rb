@@ -1,13 +1,11 @@
-class ProductController < ApplicationController
+class ProductsController < ApplicationController
 
 	def index
-		@product = Product.all
-		redirect_to './index'
+		@products = Product.all
 	end
 
 	def new
 		@product = Product.new(params[:product])
-
 	end
 
 	def show
