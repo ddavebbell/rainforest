@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2019_06_22_221606) do
     t.string "name"
     t.string "description"
     t.integer "price"
+    t.string "pic_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pic_url"
   end
 
   create_table "reviews", force: :cascade do |t|
