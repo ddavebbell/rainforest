@@ -1,17 +1,16 @@
 <div class="">
-	SHOW PRODUCT
+	<h2>SHOW PRODUCT</h2>
 
-	<% image_tag @product %>
-
+	<%= image_tag @product.pic_url %>
 	<%= @product.name %><br>
 	<%= @product.price %><br>
 	<%= @product.description %>
 
 </div>
 
-<div class="">
-
-	<% @product.reviews.each do |review| %>
+<div class="show_all_reviews">
+	<h2>ALL PRODUCTS</h2>
+	<%= @product.reviews.each do |review| %>
 		<%= review.text %>
 		<p>Reviewer: <%= review.name %></p>
 		<p>Created at: <%= review.created_at %></p>
