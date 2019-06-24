@@ -1,12 +1,15 @@
 DISPLAY ALL PICTURES
-
 <% @products.each do |product| %>
 	<div>
-		<div class="picture"><%= image_tag(product.pic_url, class: "picture") %></div>
+		<div class="picture">
+			<%= link_to product_path(product) do %>
+	  <%= image_tag(product.pic_url, class: "picture") %>
+	<% end %>
+			</div>
 		<div class=""><%= product.name %></div>
 		<div class=""><%= product.description %></div>
 		<div class=""><%= product.price_in_cents %></div>
+		<div class=""><%= product.reviews.first %></div>
 		<br>
 	</div>
 <% end %>
-<%= link_to "Create new product?", new_product_path %>

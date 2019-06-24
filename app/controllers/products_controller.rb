@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+
 	def index
 		@products = Product.all
 	end
@@ -24,4 +25,15 @@ class ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 		@review = Review.new
 	end
+
+	def edit
+		@product = Product.find(params[:id])
+	end
+
+	def destroy
+		@product = Product.find(params[:id])
+		@product.destroy
+		redirect_to root_path
+	end
+
 end

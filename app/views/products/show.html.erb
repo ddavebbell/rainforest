@@ -1,19 +1,21 @@
 <div class="">
 	<h2>SHOW PRODUCT</h2>
-
-	<%= image_tag @product.pic_url %>
-	<%= @product.name %><br>
-	<%= @product.price_in_cents %><br>
-	<%= @product.description %>
-
+		<%= image_tag @product.pic_url %>
+		<%= @product.name %><br>
+		<%= @product.price_in_cents %><br>
+		<%= @product.description %>
+		<%= link_to "Update this product?", edit_product_path(@product) %>
+		<%= link_to 'Delete this product?',  product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
 
 <div class="show_all_reviews">
-	<h2>ALL PRODUCTS</h2>
-	<%= @product.reviews.each do |review| %>
+	<h2>ALL REVIEWS</h2>
+	<% @product.reviews.each do |review| %>
 		<%= review.text %>
 		<p>Reviewer: <%= review.name %></p>
 		<p>Created at: <%= review.created_at %></p>
+		<%= link_to "Update this review?", edit_product_review_path(@product) %>
+		<%= link_to "Delete this review?", product_review_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
 	<% end %>
 </div>
 
@@ -28,5 +30,4 @@
 
 		<%= f.submit %>
 	<% end %>
-
 </div>
