@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
 			pic_url: params[:product][:pic_url]
 		})
 		if @product.save
-			redirect_to product_path(@product)
+			redirect_to product_path(@product), notice: "You have created a product!"
 		end
 	end
 
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
 	def destroy
 		@product = Product.find(params[:id])
 		@product.destroy
-		redirect_to root_path
+		redirect_to root_path, notice: "Destruction successful!"
 	end
 
 end
