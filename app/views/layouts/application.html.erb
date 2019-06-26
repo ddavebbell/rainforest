@@ -10,18 +10,33 @@
   </head>
 <nav>
   <%= link_to "Create new product?", new_product_path %> | <%= link_to "Go Back", root_path %>
+  <% if session[:user_id] %>
+    <p>
+      <%= link_to 'Home', root_path %>
+      |
+      <%= link_to 'Log Out', sessions_path, method: :delete %>
+    </p>
+
+    Hello User#<%= session[:user_id] %><br>
+    <% else %>
+    <p>
+      <%= link_to 'New User', new_users_path %> | <%= link_to 'Login', new_sessions_path %>
+    </p>
+  <% end %>
+
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:alert] %>
+  <p class="alert"><%= flash[:alert] %></p>
+<% end %>
 </nav>
 
   <body>
-    
+
     <%= yield %>
 
-    <% if flash[:notice] %>
-      <p class="notice"><%= flash[:notice] %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p class="alert"><%= flash[:alert] %></p>
-    <% end %>
+
 
   </body>
 </html>
