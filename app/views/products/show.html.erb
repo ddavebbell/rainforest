@@ -14,7 +14,7 @@
 		<%= review.text %>
 		<p>Reviewer: <%= review.name %></p>
 		<p>Created at: <%= review.created_at %></p>
-		<%= link_to "Update this review?", edit_product_review_path(review) %>
+		<%= link_to "Update this review?", edit_product_review_path(@product) %>
 		<%= link_to "Delete this review?", product_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %>
 	<% end %>
 </div>
