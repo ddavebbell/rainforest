@@ -30,11 +30,11 @@ class ApplicationController < ActionController::Base
 	#   end
 	# end
 
-	def ensure_user_owns_review
-		unless current_user == @review.user
-			flash[:alert] = "You are not authorised for that."
-			redirect_to new_sessions_url
-		end
-	end
+	# def ensure_user_owns_review
+	# 	unless current_user == @review.user
+	# 		flash[:alert] = "You are not authorised for that."
+	# 		redirect_to new_sessions_url
+	# 	end
+	# end
 
 end

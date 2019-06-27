@@ -29,7 +29,8 @@ before_action :load_product, only: [:show, :edit, :update, :destroy]
 			name: params[:product][:name],
 			description: params[:product][:description],
 			price_in_cents: params[:product][:price_in_cents],
-			pic_url: params[:product][:pic_url]
+			pic_url: params[:product][:pic_url],
+			user_id: current_user.id
 		})
 			redirect_to root_url
 		else
@@ -42,6 +43,7 @@ before_action :load_product, only: [:show, :edit, :update, :destroy]
 	end
 
 	def edit
+
 	end
 
 	def destroy
