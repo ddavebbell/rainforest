@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
 	has_many :reviews, dependent: :destroy
+	belongs_to :user
 
 	validates :name, :description, :price_in_cents, presence: true
 	validate :price_in_cents_is_integer

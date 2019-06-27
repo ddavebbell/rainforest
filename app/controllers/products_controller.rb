@@ -3,7 +3,6 @@ before_action :ensure_logged_in, except: [:show, :index]
 
 	def index
 		@products = Product.all
-
 	end
 
 	def new
@@ -16,7 +15,8 @@ before_action :ensure_logged_in, except: [:show, :index]
 			name: params[:product][:name],
 			description: params[:product][:description],
 			price_in_cents: params[:product][:price_in_cents],
-			pic_url: params[:product][:pic_url]
+			pic_url: params[:product][:pic_url],
+			user_id: current_user.id
 		})
 		if @product.save
 			redirect_to product_path(@product), notice: "You have created a product!"
