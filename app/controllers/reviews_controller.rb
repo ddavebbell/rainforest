@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
-before_action :load_review, only: [:new, :edit, :show, :update, :destroy]
+before_action :ensure_logged_in, except: [:show, :index]
+before_action :load_review, only: [:new, :show, :update, :destroy]
 
 	def index
 		@reviews = Product.first.reviews.all
@@ -8,12 +9,6 @@ before_action :load_review, only: [:new, :edit, :show, :update, :destroy]
 
 	def show
 		@product = Product.find(params[:id])
-		@reviews = @product.reviews
-	end
-
-	def destroy
-		@review.destroy
-		redirect_to root_url, notice: "Destruction successful!"
 	end
 
 	def new
@@ -21,7 +16,7 @@ before_action :load_review, only: [:new, :edit, :show, :update, :destroy]
 	end
 
 	def edit
-
+		@review = Review.find_by(product_id: params[:id])
 	end
 
 	def create
@@ -47,11 +42,17 @@ before_action :load_review, only: [:new, :edit, :show, :update, :destroy]
 			product_id: params[:product_id],
 			user_id: current_user.id )
 
-			if @review.save
-				redirect_to product_path(params[:product_id])
-				flash[:notice] = "Review successfully updated"
-			else
-				flash[:notice] = "Nothing happened."
-			end
+		if @review.save
+			redirect_to product_path(params[:product_id])
+			flash[:notice] = "Review successfully updated"
+		else
+			flash[:notice] = "Nothing happened."
+		end
+
+		def destroy
+			@review.destroy
+			redirect_to root_url, notice: "Destruction successful!"
+		end
 	end
+
 end

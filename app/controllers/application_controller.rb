@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
 
 	def load_review
 		@review = Review.find_by(product_id: params[:id])
-
 	end
 
 	def ensure_logged_in
