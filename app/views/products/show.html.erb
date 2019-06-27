@@ -16,7 +16,7 @@
 		<p>Created at: <%= r.created_at %></p>
 
 		<%= link_to "Update this review?", edit_product_review_path(r) %>
-		<%= link_to "Delete this review?", product_review_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= link_to "Delete this review?", product_review_path(r), method: :delete, data: { confirm: 'Are you sure?' } %>
 	<% end %>
 </div>
 

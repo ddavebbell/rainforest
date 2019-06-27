@@ -1,6 +1,6 @@
 <h1>Editing Review</h1>
 
-<%= form_for @review, url: product_review_path do |f| %>
+<%= form_for @review, url: edit_product_review_path(@review) do |f| %>
 	<%= f.label :name %>
 	<%= f.text_field :name %><br>
 
