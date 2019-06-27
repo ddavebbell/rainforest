@@ -1,0 +1,11 @@
+<h1>Editing Review</h1>
+
+<%= form_for @review, url: product_review_url do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %><br>
+
+	<%= f.label :text %>
+	<%= f.text_field :text %><br>
+
+	<%= f.submit %>
+<% end %>

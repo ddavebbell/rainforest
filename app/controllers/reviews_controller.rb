@@ -1,11 +1,11 @@
 class ReviewsController < ApplicationController
-before_action :load_review, only: [:new, :show, :edit, :update, :destroy]
-before_action :ensure_user_owns_review, except: [:index, :show, :new]
+before_action :load_review, only: [:new, :show, :update, :destroy]
+# before_action :ensure_user_owns_review, except: [:index, :show, :new]
 
-	# def index
-	# 	@reviews = Product.first.reviews.all
-	# 	@review = Product.find(params[:product_id]).reviews.first
-	# end
+	def index
+		@reviews = Product.first.reviews.all
+		@review = Product.find(params[:product_id]).reviews.first
+	end
 
 	def show
 		@product = Product.find(params[:product_id])
@@ -33,17 +33,16 @@ before_action :ensure_user_owns_review, except: [:index, :show, :new]
 			user_id: current_user.id )
 
 			if @review.save
-				redirect_to product_path(params[:id])
+				redirect_to product_path(params[:product_id])
 				flash[:notice] = "Review successfully created"
 			else
 				flash[:notice] = "Nothing happened."
 			end
 	end
 
+	def update
+		redirect_to product_path(params[:product_id])
+	end
 
-	# def destroy
-	# 	@review = Review.find(params[:id])
-	# 	@review.destroy
-	# end
 
 end
