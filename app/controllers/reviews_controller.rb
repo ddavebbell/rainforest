@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-before_action :load_review, only: [:new, :show, :update, :destroy]
+before_action :load_review, only: [:new, :edit, :show, :update, :destroy]
 # before_action :ensure_user_owns_review, except: [:index, :show, :new]
 
 	def index
@@ -8,7 +8,7 @@ before_action :load_review, only: [:new, :show, :update, :destroy]
 	end
 
 	def show
-		@product = Product.find(params[:product_id])
+		@product = Product.find(params[:id])
 		@reviews = @product.reviews
 	end
 
@@ -22,6 +22,7 @@ before_action :load_review, only: [:new, :show, :update, :destroy]
 	end
 
 	def edit
+
 	end
 
 	def create

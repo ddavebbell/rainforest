@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
 	end
 
 	def load_review
-		@reviews = Review.where(product_id: params[:id])
-		@review = Review.where(product_id: params[:id])
+		@review = Review.find_by(product_id: params[:id])
+
 	end
 
 	def ensure_logged_in
@@ -23,18 +23,18 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def ensure_user_owns_product
-	  unless current_user == @product.user
-	    flash[:alert] = "Please log in"
-	    redirect_to new_sessions_url
-	  end
-	end
-
-	# def ensure_user_owns_review
-	# 	unless current_user.id == @review.user_id
-	# 		flash[:alert] = "You are not authorised for that."
-	# 		redirect_to new_sessions_url
-	# 	end
+	# def ensure_user_owns_product
+	#   unless current_user.id == @product.user_id
+	#     flash[:alert] = "Please log in"
+	#     redirect_to new_sessions_url
+	#   end
 	# end
+
+	def ensure_user_owns_review
+		unless current_user == @review.user
+			flash[:alert] = "You are not authorised for that."
+			redirect_to new_sessions_url
+		end
+	end
 
 end

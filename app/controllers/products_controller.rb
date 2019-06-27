@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
 before_action :ensure_logged_in, except: [:show, :index]
 before_action :load_product, only: [:show, :edit, :update, :destroy]
-before_action :ensure_user_owns_product, except: [:show, :index, :new]
+# before_action :ensure_user_owns_product, except: [:show, :edit, :index, :new]
+before_action :ensure_user_owns_review, only: [:update, :destroy]
 
 	def index
 		@products = Product.all
