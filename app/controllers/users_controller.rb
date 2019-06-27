@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_url
     else
-      flash[:alert] = 'User not created!'
+      flash[:alert] = @user.errors.full_messages
       render :new
     end
   end
