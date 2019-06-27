@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 before_action :ensure_logged_in, except: [:show, :index]
+before_action :load_product, only: [:show, :edit, :update, :destroy]
+before_action :ensure_user_owns_product, except: [:show, :index, :new]
 
 	def index
 		@products = Product.all
@@ -24,7 +26,6 @@ before_action :ensure_logged_in, except: [:show, :index]
 	end
 
 	def update
-		@product = Product.find(params[:id])
 		if @product.update({
 			name: params[:product][:name],
 			description: params[:product][:description],
@@ -38,17 +39,13 @@ before_action :ensure_logged_in, except: [:show, :index]
 	end
 
 	def show
-		@product = Product.find(params[:id])
 		@review = Review.new
 	end
 
 	def edit
-		@product = Product.find(params[:id])
-
 	end
 
 	def destroy
-		@product = Product.find(params[:id])
 		@product.destroy
 		redirect_to root_url, notice: "Destruction successful!"
 	end
