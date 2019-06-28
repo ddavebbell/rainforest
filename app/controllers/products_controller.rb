@@ -36,6 +36,7 @@ before_action :load_product, only: [:show, :edit, :update, :destroy]
 		})
 			redirect_to root_url
 		else
+			flash[:alert] = @product.errors
 			render :edit
 		end
 	end

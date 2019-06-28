@@ -14,8 +14,8 @@ before_action :load_review, only: [:new, :show, :destroy]
 	end
 
 	def edit
-		reviews = Review.where(product_id: params[:id])
-		@review = reviews.find(params[:product_id])
+		@review = Review.find_by(product_id: params[:product_id], user_id: current_user.id)
+		@product = Product.find(params[:product_id])
 	end
 
 	def create
@@ -35,9 +35,7 @@ before_action :load_review, only: [:new, :show, :destroy]
 	end
 
 	def update
-		reviews = Review.where(product_id: params[:id])
-		@review = reviews.find_by(product_id: params[:id])
-
+		@review = Review.find_by(product_id: params[:id], user_id: current_user.id)
 		@review.assign_attributes(
 			name: params[:review][:name],
 			text: params[:review][:text],
