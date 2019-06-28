@@ -1,10 +1,8 @@
 class ReviewsController < ApplicationController
 before_action :ensure_logged_in, except: [:show, :index]
-before_action :load_review, only: [:new, :show, :update, :destroy]
+before_action :load_review, only: [:new, :show, :destroy]
 
 	def index
-		@reviews = Product.first.reviews.all
-		@review = Product.find(params[:product_id]).reviews.first
 	end
 
 	def show
@@ -37,6 +35,9 @@ before_action :load_review, only: [:new, :show, :update, :destroy]
 	end
 
 	def update
+		reviews = Review.where(product_id: params[:id])
+		@review = reviews.find_by(product_id: params[:id])
+
 		@review.assign_attributes(
 			name: params[:review][:name],
 			text: params[:review][:text],

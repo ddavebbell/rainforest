@@ -21,6 +21,8 @@ before_action :load_product, only: [:show, :edit, :update, :destroy]
 		})
 		if @product.save
 			redirect_to product_path(@product), notice: "You have created a product!"
+		else
+			@product.errors
 		end
 	end
 
